@@ -12,22 +12,20 @@ Do the steps **in this order**. Total time: ~30–45 minutes.
 
 ---
 
-## Step 0 — Put your code on GitHub
+## Step 0 — Put your code on GitHub ✅ (DONE)
 
 Both Render and Vercel deploy from a GitHub repository.
 
-1. Create a free account at https://github.com and install **Git** (https://git-scm.com/download/win).
-2. Create a new **empty** repository on GitHub called `peerlearn` (no README).
-3. In a terminal inside `C:\peerlearn1`, run:
-   ```
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/peerlearn.git
-   git push -u origin main
-   ```
-   (Your `.gitignore` already keeps `node_modules` and `.env` out of the repo.)
+Your code is already pushed to:
+**https://github.com/telishlok510-prog/peerlearn**
+
+For future code changes, just run:
+```
+git add .
+git commit -m "describe your change"
+git push
+```
+Render and Vercel will automatically redeploy.
 
 ---
 
@@ -104,3 +102,14 @@ Both Render and Vercel deploy from a GitHub repository.
 - After any code change, just `git push` — Render and Vercel redeploy automatically.
 - Default admin login (created by the seed): `admin@college.edu` / `admin12345`
   — change the password after first login.
+
+---
+
+## Pre-launch checklist
+
+- [ ] `JWT_SECRET` changed to a long random value in production (not the dev value).
+- [ ] Admin password changed from the default after first login.
+- [ ] `CLIENT_URL` set on the backend (Render) so CORS is restricted to your frontend.
+- [ ] `VITE_API_URL` on the frontend (Vercel) points at the backend and ends with `/api`.
+- [ ] Atlas Network Access allows `0.0.0.0/0` (or Render's IP).
+- [ ] Real `.env` files are NOT committed to git (only `.env.example` is).
