@@ -118,6 +118,15 @@ export default function Landing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
+              🎓 Student to Student Learning Platform
+            </motion.span>
+            <motion.span
+              className="lp-badge"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              style={{ marginLeft: 10 }}
+            >
               🎓 Your college's learning community
             </motion.span>
             <motion.h1
