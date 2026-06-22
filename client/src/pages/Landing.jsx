@@ -27,19 +27,13 @@ function Counter({ to, suffix = "" }) {
 }
 
 /* Wrapper that fades + slides content up when it enters the viewport. */
-/* On mobile, animations are disabled — content shows immediately. */
 function Reveal({ children, delay = 0, y = 28 }) {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-  if (isMobile) return <>{children}</>;
   return (
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -81,11 +75,6 @@ export default function Landing() {
     localStorage.setItem("lp-theme", dark ? "dark" : "light");
   }, [dark]);
 
-  const isMobileView = typeof window !== "undefined" && window.innerWidth < 768;
-  const mAnim = isMobileView
-    ? { initial: {}, animate: {}, transition: {} }
-    : null;
-
   return (
     <div className={`lp ${dark ? "dark" : ""}`} id="top">
       {/* ---------- Navbar ---------- */}
@@ -125,41 +114,41 @@ export default function Landing() {
           <div>
             <motion.span
               className="lp-badge"
-              initial={mAnim ? {} : { opacity: 0, y: 14 }}
-              animate={mAnim ? {} : { opacity: 1, y: 0 }}
-              transition={mAnim ? {} : { duration: 0.5 }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
               🎓 Student to Student Learning Platform
             </motion.span>
             <motion.span
               className="lp-badge"
-              initial={mAnim ? {} : { opacity: 0, y: 14 }}
-              animate={mAnim ? {} : { opacity: 1, y: 0 }}
-              transition={mAnim ? {} : { duration: 0.5, delay: 0.08 }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08 }}
             >
               🎓 Your college's learning community
             </motion.span>
             <motion.h1
-              initial={mAnim ? {} : { opacity: 0, y: 18 }}
-              animate={mAnim ? {} : { opacity: 1, y: 0 }}
-              transition={mAnim ? {} : { duration: 0.6, delay: 0.05 }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               Learn. Teach. <span className="lp-gradient-text">Earn.</span>
             </motion.h1>
             <motion.p
               className="lp-hero-sub"
-              initial={mAnim ? {} : { opacity: 0, y: 18 }}
-              animate={mAnim ? {} : { opacity: 1, y: 0 }}
-              transition={mAnim ? {} : { duration: 0.6, delay: 0.15 }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               Connect with talented students across your college. Learn subjects,
               share skills, and earn by teaching what you know.
             </motion.p>
             <motion.div
               className="lp-hero-cta"
-              initial={mAnim ? {} : { opacity: 0, y: 18 }}
-              animate={mAnim ? {} : { opacity: 1, y: 0 }}
-              transition={mAnim ? {} : { duration: 0.6, delay: 0.25 }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
               <Link to="/register"><button className="lp-btn lp-btn-primary">🔍 Find a Tutor</button></Link>
               <Link to="/register"><button className="lp-btn lp-btn-accent">🎓 Become a Tutor</button></Link>
@@ -175,22 +164,22 @@ export default function Landing() {
           <div className="lp-hero-visual">
             <motion.div
               className="lp-orb"
-              animate={isMobileView ? {} : { y: [0, -14, 0] }}
-              transition={isMobileView ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <div className="lp-orb-emoji">👩‍🎓👨‍🎓</div>
             </motion.div>
 
-            <motion.div className="lp-float-card fc1" animate={isMobileView ? {} : { y: [0, -12, 0] }} transition={isMobileView ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div className="lp-float-card fc1" animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
               <span className="ic" style={{ background: "#4f46e5" }}>💸</span> Earned ₹2,400
             </motion.div>
-            <motion.div className="lp-float-card fc2" animate={isMobileView ? {} : { y: [0, 12, 0] }} transition={isMobileView ? {} : { duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div className="lp-float-card fc2" animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
               <span className="ic" style={{ background: "#06b6d4" }}>📚</span> DBMS · Booked
             </motion.div>
-            <motion.div className="lp-float-card fc3" animate={isMobileView ? {} : { y: [0, -10, 0] }} transition={isMobileView ? {} : { duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div className="lp-float-card fc3" animate={{ y: [0, -10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
               <span className="ic" style={{ background: "#f59e0b" }}>⭐</span> 4.9 Rating
             </motion.div>
-            <motion.div className="lp-float-card fc4" animate={isMobileView ? {} : { y: [0, 10, 0] }} transition={isMobileView ? {} : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div className="lp-float-card fc4" animate={{ y: [0, 10, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}>
               <span className="ic" style={{ background: "#10b981" }}>🔄</span> Skill swap
             </motion.div>
           </div>
