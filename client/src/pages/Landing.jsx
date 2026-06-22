@@ -141,7 +141,7 @@ export default function Landing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Connect with talented students across your college. Learn subjects,
+              PeerLearn is a Student to Student Learning Platform for your college campus. Connect with talented students across your college. Learn subjects,
               share skills, and earn by teaching what you know.
             </motion.p>
             <motion.div
