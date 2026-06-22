@@ -590,3 +590,17 @@
   padding: 8px 14px;
   font-family: "Poppins", sans-serif;
 }
+
+/* Disable framer-motion transform animations on mobile */
+@media (max-width: 768px) {
+  .lp-hero-visual,
+  .lp-hero-visual * {
+    animation: none !important;
+    transition: none !important;
+  }
+  /* Make sure scroll-reveal content is always visible */
+  .lp [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

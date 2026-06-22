@@ -27,7 +27,10 @@ function Counter({ to, suffix = "" }) {
 }
 
 /* Wrapper that fades + slides content up when it enters the viewport. */
+/* On mobile, animations are disabled for better performance. */
 function Reveal({ children, delay = 0, y = 28 }) {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  if (isMobile) return <div>{children}</div>;
   return (
     <motion.div
       initial={{ opacity: 0, y }}
@@ -125,7 +128,6 @@ export default function Landing() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              style={{ marginLeft: 10 }}
             >
               🎓 Your college's learning community
             </motion.span>
@@ -293,46 +295,6 @@ export default function Landing() {
                 </div>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- Popular skills ---------- */}
-      <section className="lp-section soft" id="exchange">
-        <div className="lp-container">
-          <div className="lp-grid-head">
-            <span className="lp-kicker">Explore</span>
-            <h2 className="lp-title">Popular Skills</h2>
-          </div>
-          <div className="lp-skills">
-            {[
-              { ic: "💻", n: "Programming" }, { ic: "🌐", n: "Web Development" },
-              { ic: "📊", n: "Data Science" }, { ic: "➗", n: "Mathematics" },
-              { ic: "🗣️", n: "English Speaking" }, { ic: "🎨", n: "Graphic Design" },
-              { ic: "🎬", n: "Video Editing" }, { ic: "🎤", n: "Public Speaking" },
-            ].map((s, i) => (
-              <Reveal key={s.n} delay={(i % 4) * 0.05}>
-                <div className="lp-skill"><span className="ic">{s.ic}</span>{s.n}</div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Skill exchange example */}
-          <div className="lp-cards-2" style={{ marginTop: 40 }}>
-            <Reveal>
-              <div className="lp-xchg">
-                <div className="lp-xchg-row"><span className="lp-pill teach">I teach</span> Web Development</div>
-                <div style={{ textAlign: "center", margin: "12px 0", fontSize: 22 }}>🔄</div>
-                <div className="lp-xchg-row"><span className="lp-pill">I learn</span> Graphic Design</div>
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="lp-xchg">
-                <div className="lp-xchg-row"><span className="lp-pill teach">I teach</span> Python &amp; ML</div>
-                <div style={{ textAlign: "center", margin: "12px 0", fontSize: 22 }}>🔄</div>
-                <div className="lp-xchg-row"><span className="lp-pill">I learn</span> Public Speaking</div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
